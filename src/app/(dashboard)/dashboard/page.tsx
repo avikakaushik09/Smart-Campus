@@ -3,6 +3,13 @@
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
+interface NavLink {
+  label: string;
+  icon: string;
+  href: string;
+  color: string;
+}
+
 export default function DashboardPage() {
   const [stats, setStats] = useState({ tasksDue: 0, attendance: 0, notices: 0 });
   const [userName, setUserName] = useState('Student');
@@ -42,16 +49,16 @@ export default function DashboardPage() {
     }
   };
 
-  const studentLinks = [
-  { label: 'My Tasks', icon: '✅', href: '/dashboard/tasks' },
-  { label: 'Timetable', icon: '📅', href: '/dashboard/timetable' },
-  { label: 'Attendance', icon: '📊', href: '/dashboard/attendance' },
-  { label: 'Notices', icon: '📢', href: '/dashboard/notices' },
-  { label: 'Notes', icon: '📝', href: '/dashboard/notes' },
-  { label: 'Profile', icon: '👤', href: '/dashboard/profile' },
-];
+  const studentLinks: NavLink[] = [
+    { label: 'My Tasks', icon: '✅', href: '/dashboard/tasks', color: 'bg-blue-50 hover:bg-blue-100' },
+    { label: 'Timetable', icon: '📅', href: '/dashboard/timetable', color: 'bg-purple-50 hover:bg-purple-100' },
+    { label: 'Attendance', icon: '📊', href: '/dashboard/attendance', color: 'bg-green-50 hover:bg-green-100' },
+    { label: 'Notices', icon: '📢', href: '/dashboard/notices', color: 'bg-orange-50 hover:bg-orange-100' },
+    { label: 'Notes', icon: '📝', href: '/dashboard/notes', color: 'bg-yellow-50 hover:bg-yellow-100' },
+    { label: 'Profile', icon: '👤', href: '/dashboard/profile', color: 'bg-pink-50 hover:bg-pink-100' },
+  ];
 
-  const adminLinks = [
+  const adminLinks: NavLink[] = [
     { label: 'Post Notice', icon: '📢', href: '/dashboard/notices', color: 'bg-orange-50 hover:bg-orange-100' },
     { label: 'All Students', icon: '👥', href: '/dashboard/students', color: 'bg-blue-50 hover:bg-blue-100' },
     { label: 'Profile', icon: '👤', href: '/dashboard/profile', color: 'bg-pink-50 hover:bg-pink-100' },
@@ -60,24 +67,16 @@ export default function DashboardPage() {
   const links = role === 'admin' ? adminLinks : studentLinks;
 
   return (
-  <div>
-    <div className="mb-8">
-      <div className="flex items-center gap-2">
-        <h1 className="text-3xl font-bold text-white">
-          Dashboard
-        </h1>
-
-        {role === 'admin' && (
-          <span className="bg-violet-600 text-white text-xs px-2 py-1 rounded-full">
-            Admin
-          </span>
-        )}
+    <div>
+      <div className="mb-8">
+        <div className="flex items-center gap-2">
+          <h1 className="text-3xl font-bold text-blue-900">Dashboard</h1>
+          {role === 'admin' && (
+            <span className="bg-blue-600 text-white text-xs px-2 py-1 rounded-full">Admin</span>
+          )}
+        </div>
+        <p className="text-blue-400 mt-1">Welcome back, {userName}! 👋</p>
       </div>
-
-      <p className="text-blue-200 mt-1">
-        Welcome back, {userName}! 👋
-      </p>
-    </div>
 
       {role === 'admin' ? (
         <div className="mb-8">
@@ -140,7 +139,7 @@ export default function DashboardPage() {
           <a key={item.href} href={item.href}
             className={`${item.color} rounded-2xl p-6 flex flex-col items-center gap-3 transition-all border border-blue-100 cursor-pointer`}>
             <span className="text-4xl">{item.icon}</span>
-            <span className="text-blue-100 font-medium text-sm">{item.label}</span>
+            <span className="text-blue-800 font-medium text-sm">{item.label}</span>
           </a>
         ))}
       </div>
