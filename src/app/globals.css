@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+
+  --card: #1e3a8a;
+  --card-foreground: #f8fafc;
+
+  --popover: #1e3a8a;
+  --popover-foreground: #f8fafc;
+
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+
+  --secondary: #1e40af;
+  --secondary-foreground: #ffffff;
+
+  --accent: #7c3aed;
+  --accent-foreground: #ffffff;
+
+  --muted: #1e293b;
+  --muted-foreground: #cbd5e1;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --border: #334155;
+  --input: #334155;
+  --ring: #60a5fa;
+
+  --radius: 1rem;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+
+  --card: #172554;
+  --card-foreground: #f8fafc;
+
+  --popover: #172554;
+  --popover-foreground: #f8fafc;
+
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+
+  --secondary: #1e3a8a;
+  --secondary-foreground: #ffffff;
+
+  --accent: #8b5cf6;
+  --accent-foreground: #ffffff;
+
+  --muted: #1e293b;
+  --muted-foreground: #cbd5e1;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --border: #334155;
+  --input: #334155;
+  --ring: #3b82f6;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* ---------- Premium Card ---------- */
+
+.bg-card,
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow:
+    0 2px 8px rgba(15, 23, 42, 0.05),
+    0 8px 24px rgba(15, 23, 42, 0.06);
+
+  transition: all .25s ease;
+}
+
+.bg-card:hover,
+.card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 32px rgba(37, 99, 235, .12);
+}
+
+/* ---------- Buttons ---------- */
+
+button{
+  transition:.25s ease;
+}
+
+button:hover{
+  transform:translateY(-1px);
+}
+
+/* ---------- Inputs ---------- */
+
+input,
+textarea,
+select{
+  transition:.25s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  outline:none;
+  box-shadow:0 0 0 4px rgba(37,99,235,.12);
+}
+
+/* ---------- Scrollbar ---------- */
+
+::-webkit-scrollbar{
+  width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#94a3b8;
+  border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background:#64748b;
+}
